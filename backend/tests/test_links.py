@@ -42,7 +42,7 @@ def test_internal_absoulute_link():
     assert result.external_links ==0
 
 def test_external_link():
-    html = '<a href="https://google.com">Google</a>'c
+    html = '<a href="https://google.com">Google</a>'
 
     result = analyze_links(html, base_url = "https:// example.com")
 
