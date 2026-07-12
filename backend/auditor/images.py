@@ -27,7 +27,7 @@ def analyze_images(html:str)-> ImageResult:
             images_with_alt +=1
     
     return ImageResult(
-        tota_images = total_images,
+        total_images = total_images,
         images_with_alt = images_with_alt,
         missing_alt = missing_alt,
         empty_alt = empty_alt,
