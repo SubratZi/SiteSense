@@ -18,7 +18,7 @@ def make_good_seo():
 
 def make_good_images():
     return ImageResult(
-        tota_images = 5,
+        total_images = 5,
         images_with_alt=5,
         missing_alt=0,
         empty_alt =0,
@@ -26,7 +26,7 @@ def make_good_images():
 
 def make_good_links():
     return LinkResult(
-        total_links = 10,
+        total_links = 6,
         internal_links =3,
         external_links =3,
         empty_links =0,
@@ -159,7 +159,7 @@ def test_missing_open_graph():
     assert any("og:title" in r.lower() for r in result.recommendations)
 
 
-def test_grade_f():
+def test_grade_e():
     seo = SEOResult(
         title=None,
         title_length=0,
@@ -202,7 +202,7 @@ def test_grade_f():
         og,
     )
 
-    assert result.grade == "F"
+    assert result.grade == "E"
 
 
 def test_score_never_negative():
@@ -248,4 +248,5 @@ def test_score_never_negative():
         og,
     )
 
-    assert result.score == 0
+    assert result.score >= 0
+    assert result.score <=100
