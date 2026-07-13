@@ -28,7 +28,8 @@ def analyze_opengraph(html:str) -> OpenGraphResult:
     
     return OpenGraphResult(
         og_title = get_meta("property", "og:title"),
-        og_descriptions = get_meta("property", "og:description"),
-        og_image = get_meta("property", "og.url"),
+        og_description = get_meta("property", "og:description"),
+        og_image = get_meta("property", "og:image"),
+        og_url = get_meta("property", "og:url"),
         twitter_card = get_meta("name", "twitter:card"),
     )

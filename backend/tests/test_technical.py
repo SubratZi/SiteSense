@@ -9,7 +9,7 @@ def test_https_true():
     assert result.has_https is True
 
 def test_https_false():
-    result = analyze_technical("", "https://exmaple.com")
+    result = analyze_technical("", "http://exmaple.com")
     assert result.has_https is False
 
 def test_lang_present():
@@ -25,6 +25,10 @@ def test_empty_lang():
 def test_charset_present():
     html = '<meta charset= "UTF-8">'
     result = analyze_technical(html)
+    assert result.has_charset is True
+
+def test_charset_missing():
+    result = analyze_technical("<html></html")
     assert result.has_charset is False
 
 def test_viewport_present():
