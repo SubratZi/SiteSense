@@ -31,8 +31,13 @@ function App(){
     }
   }
   return(
-    <div style={{padding: "40px"}}>
-      <h1>SiteSense</h1>
+    <div className="app">
+      <div className="header">
+        <h1>SiteSense</h1>
+        <p>
+          Analyze websites's SEO, issues in them, tags, links and more.
+        </p>
+      </div>
       <AnalyzeForm 
         onAnalyze = {analyzeWebsite}
         loading = {loading}
