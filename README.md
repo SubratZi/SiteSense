@@ -13,7 +13,7 @@ SiteSense/
 │   ├── auditor/                  
 │   │   ├── __init__.py
 │   │   ├── analyzer.py           
-│   │   ├── fetcher.py            
+│   │   ├── renderer.py            
 │   │   ├── seo.py                
 │   │   ├── images.py             
 │   │   ├── links.py              
@@ -22,7 +22,7 @@ SiteSense/
 │   │   └── scorer.py             
 │   │
 │   ├── tests/                    
-│   │   ├── test_fetcher.py
+│   │   ├── test_renderer.py
 │   │   ├── test_seo.py
 │   │   ├── test_images.py
 │   │   ├── test_links.py

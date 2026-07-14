@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from schemas import AuditRequest
 from auditor.analyzer import analyze
-from auditor.fetcher import FetchError
+from auditor.renderer import RenderError
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -36,7 +36,7 @@ def analyze_site(request: AuditRequest):
     try:
         result = analyze(str(request.url))
         return result
-    except FetchError as e:
+    except RenderError as e:
         raise HTTPException(
             status_code = 400,
             detail = str(e),

@@ -50,7 +50,7 @@ function App(){
             recommendations = {result.score.recommendations}
           />
           <ScreenshotCard
-            screenshot={result.screenshot}
+            screenshot={result.render.screenshot}
           />
           <SEOCard seo={result.seo} />
           <TechnicalCard technical={result.technical} />
