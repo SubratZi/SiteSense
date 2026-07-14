@@ -3,6 +3,8 @@ import api from "./api/api";
 import AnalyzeForm from "./components/AnalyzeForm";
 import ScoreCard from "./components/ScoreCard";
 import RecommendationList from "./components/RecommendationList";
+import ScreenshotCard from "./components/ScreenshotCard";
+import SEOCard from "./components/SEOCard";
 
 function App(){
   const [loading, setLoading] = useState(false);
@@ -38,6 +40,10 @@ function App(){
           <RecommendationList
             recommendations = {result.score.recommendations}
           />
+          <ScreenshotCard
+            screenshot={result.screenshot}
+          />
+          <SEOCard seo={result.seo} />
           <pre style= {{
             marginTop:30,
             background: "#eee",
