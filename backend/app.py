@@ -2,11 +2,17 @@ from fastapi import FastAPI, HTTPException
 from schemas import AuditRequest
 from auditor.analyzer import analyze
 from auditor.fetcher import FetchError
+from fastapi.staticfiles import StaticFiles
 
 app =  FastAPI(
     title="SiteSense API",
     version="1.0.0",
 )
+
+app.mount("/screenshots",
+          StaticFiles(directory="screenshots"),
+          name="screenshots",
+          )
 
 @app.get("/")
 def root():
@@ -24,8 +30,8 @@ def analyze_site(request: AuditRequest):
             status_code = 400,
             detail = str(e),
         )
-    except Exception:
+    except Exception as e:
         raise HTTPException(
             status_code = 500,
-            detail = "Internal Server Error",
+            detail =  str(e),
         )

@@ -6,6 +6,7 @@ from auditor.links  import analyze_links, LinkResult
 from auditor.technical import analyze_technical, TechnicalResult
 from auditor.opengraph import analyze_opengraph, OpenGraphResult
 from auditor.scorer import calculate_score, ScoreResult
+from auditor.screenshot import take_screenshot
 
 @dataclass
 class AuditResult:
@@ -16,6 +17,7 @@ class AuditResult:
     technical: TechnicalResult
     opengraph: OpenGraphResult
     score: ScoreResult
+    screenshot: str
 
 def analyze(url: str) -> AuditResult:
     fetch_result = fetch(url)
@@ -36,6 +38,8 @@ def analyze(url: str) -> AuditResult:
         technical=technical_result,
         opengraph = opengraph_result,
     )
+    screenshot = take_screenshot(fetch_result.url)
+
     return AuditResult(
         fetch = fetch_result,
         seo = seo_result,
@@ -44,4 +48,5 @@ def analyze(url: str) -> AuditResult:
         technical=technical_result,
         opengraph=opengraph_result,
         score= score_result,
+        screenshot = screenshot,
     )

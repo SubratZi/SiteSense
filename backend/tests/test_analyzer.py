@@ -8,7 +8,7 @@ def make_fetch_result():
             <title>Example Site</title>
 
             <meta name="description"
-                  content="This is an example description that is comfortably over 120 characters. Lorem ipsum dolor sit amet, consectetur adipiscing elitumai kumaiwd.">
+                  content="This is an example description that is comfortably over 120 characters. Lorem ipsum dolor sit amet, consectetur adipiscing elitumai kumaiwd.. SEO analyzer! This is just for the test of the characters.">
 
             <meta charset="UTF-8">
 
@@ -59,20 +59,25 @@ def make_fetch_result():
         headers={"Content-Type": "text/html"},
     )
 
-def test_returns_audit_result(mocker):
+def mock_dependencies(mocker):
     mocker.patch(
         "auditor.analyzer.fetch",
         return_value = make_fetch_result(),
     )
+    mocker.patch(
+        "auditor.analyzer.take_screenshot",
+        return_value = "screenshots/example.png",
+    )
+
+
+def test_returns_audit_result(mocker):
+    mock_dependencies(mocker)
 
     result = analyze("https://example.com")
     assert isinstance(result, AuditResult)
 
 def test_fetch_information(mocker):
-    mocker.patch(
-        "auditor.analyzer.fetch",
-        return_value= make_fetch_result(),
-    )
+    mock_dependencies(mocker)
     result = analyze("https://example.com")
     assert result.fetch.status_code == 200
     assert result.fetch.url =="https://example.com"
@@ -81,10 +86,7 @@ def test_fetch_information(mocker):
     
 
 def test_contains_all_results(mocker):
-    mocker.patch(
-        "auditor.analyzer.fetch",
-        return_value = make_fetch_result(),
-    )
+    mock_dependencies(mocker)
     result = analyze("https://example.com")
 
     assert result.seo.title == "Example Site"
@@ -94,10 +96,7 @@ def test_contains_all_results(mocker):
     assert result.opengraph.og_title == "Example Site"
 
 def test_score_is_generated(mocker):
-    mocker.patch(
-        "auditor.analyzer.fetch",
-        return_value= make_fetch_result(),
-    )
+    mock_dependencies(mocker)
     result = analyze("https://example.com")
     assert result.score.score >=0
     assert result.score.score <=100
@@ -109,5 +108,15 @@ def test_fetch_called_once(mocker):
         return_value = make_fetch_result(),
         )
     
+    mocker.patch(
+        "auditor.analyzer.take_screenshot",
+        return_value = "screenshots/example.png",
+    )
+    
     analyze("https://example.com")
     mocked.assert_called_once_with("https://example.com")
+
+def test_screenshot_is_generated(mocker):
+    mock_dependencies(mocker)
+    result = analyze("https://example.com")
+    assert result.screenshot == "screenshots/example.png"
