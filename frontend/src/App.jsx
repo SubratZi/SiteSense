@@ -6,6 +6,7 @@ import RecommendationList from "./components/RecommendationList";
 import ScreenshotCard from "./components/ScreenshotCard";
 import SEOCard from "./components/SEOCard";
 import TechnicalCard from "./components/TechnicalCard";
+import OpenGraphCard from "./components/OpenGraphCard";
 
 function App(){
   const [loading, setLoading] = useState(false);
@@ -46,6 +47,7 @@ function App(){
           />
           <SEOCard seo={result.seo} />
           <TechnicalCard technical={result.technical} />
+          <OpenGraphCard opengraph = {result.opengraph} />
 
           <pre style= {{
             marginTop:30,
