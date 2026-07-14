@@ -7,6 +7,8 @@ import ScreenshotCard from "./components/ScreenshotCard";
 import SEOCard from "./components/SEOCard";
 import TechnicalCard from "./components/TechnicalCard";
 import OpenGraphCard from "./components/OpenGraphCard";
+import ImagesCard from "./components/ImagesCard";
+import LinksCard from "./components/LinksCard";
 
 function App(){
   const [loading, setLoading] = useState(false);
@@ -48,16 +50,8 @@ function App(){
           <SEOCard seo={result.seo} />
           <TechnicalCard technical={result.technical} />
           <OpenGraphCard opengraph = {result.opengraph} />
-
-          <pre style= {{
-            marginTop:30,
-            background: "#eee",
-            padding:20,
-            overflowX: "auto",
-          }}
-        >
-          {JSON.stringify(result, null, 2)}
-        </pre>
+          <ImagesCard images = {result.images}/>
+          <LinksCard links={result.links} />
         </>
       )}
     </div>
