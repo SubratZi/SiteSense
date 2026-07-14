@@ -5,6 +5,7 @@ import ScoreCard from "./components/ScoreCard";
 import RecommendationList from "./components/RecommendationList";
 import ScreenshotCard from "./components/ScreenshotCard";
 import SEOCard from "./components/SEOCard";
+import TechnicalCard from "./components/TechnicalCard";
 
 function App(){
   const [loading, setLoading] = useState(false);
@@ -44,6 +45,8 @@ function App(){
             screenshot={result.screenshot}
           />
           <SEOCard seo={result.seo} />
+          <TechnicalCard technical={result.technical} />
+
           <pre style= {{
             marginTop:30,
             background: "#eee",
