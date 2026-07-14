@@ -1,6 +1,7 @@
 import { useState } from "react";
 import api from "./api/api";
 import AnalyzeForm from "./components/AnalyzeForm";
+import ScoreCard from "./components/ScoreCard";
 
 function App(){
   const [loading, setLoading] = useState(false);
@@ -31,15 +32,18 @@ function App(){
       />
 
       {result && (
-        <pre style= {{
-          marginTop:30,
-          background: "#eee",
-          padding:20,
-          overflowX: "auto",
-        }}
+        <>
+          <ScoreCard score = {result.score} />
+          <pre style= {{
+            marginTop:30,
+            background: "#eee",
+            padding:20,
+            overflowX: "auto",
+          }}
         >
           {JSON.stringify(result, null, 2)}
         </pre>
+        </>
       )}
     </div>
   );
