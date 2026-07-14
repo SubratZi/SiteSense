@@ -2,6 +2,7 @@ import { useState } from "react";
 import api from "./api/api";
 import AnalyzeForm from "./components/AnalyzeForm";
 import ScoreCard from "./components/ScoreCard";
+import RecommendationList from "./components/RecommendationList";
 
 function App(){
   const [loading, setLoading] = useState(false);
@@ -34,6 +35,9 @@ function App(){
       {result && (
         <>
           <ScoreCard score = {result.score} />
+          <RecommendationList
+            recommendations = {result.score.recommendations}
+          />
           <pre style= {{
             marginTop:30,
             background: "#eee",
