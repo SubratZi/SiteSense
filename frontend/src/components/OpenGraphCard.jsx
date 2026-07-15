@@ -15,7 +15,7 @@ function OpenGraphCard({opengraph}) {
             </p>
             <p>
                 <strong>OG Description:</strong>{" "}
-                {opengraph.og_description >> "Not Found"}
+                {opengraph.og_description ?? "Not Found"}
             </p>
             <p>
                 <strong>OG Image:</strong>{" "}

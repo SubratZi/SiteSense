@@ -30,7 +30,7 @@ function TechnicalCard({technical}) {
             </p>
 
             <p>
-                <strong>Cononical URL:</strong>{" "}
+                <strong>Canonical URL:</strong>{" "}
                 {technical.has_canonical ? "Yes": "No"}
             </p>
 
