@@ -5,12 +5,11 @@ function AnalyzeForm({ onAnalyze, loading }){
     function handleSubmit(e) {
         e.preventDefault();
         if(!url.trim()) return;
-
         onAnalyze(url);
     }
 
     return(
-        <form onSubmit={handleSubmit}>
+        <form className = "form" onSubmit={handleSubmit}>
             <input
                 type="url"
                 placeholder="https://example.com"
@@ -19,6 +18,7 @@ function AnalyzeForm({ onAnalyze, loading }){
                 required
             />
             <button type="submit" disabled={loading}>
+                {loading && <span className = "spinner" />}
                 {loading ? "Analyzing..." : "Analyze"}
             </button>
         </form>
