@@ -1,3 +1,4 @@
+import "./App.css";
 import { useState } from "react";
 import api from "./api/api";
 import AnalyzeForm from "./components/AnalyzeForm";
@@ -9,7 +10,7 @@ import TechnicalCard from "./components/TechnicalCard";
 import OpenGraphCard from "./components/OpenGraphCard";
 import ImagesCard from "./components/ImagesCard";
 import LinksCard from "./components/LinksCard";
-import toast from "./components/Toast";
+import Toast from "./components/Toast";
 
 function App(){
   const [loading, setLoading] = useState(false);
@@ -18,7 +19,7 @@ function App(){
 
   function addToast(message, type = "error"){
     const id = Date.now();
-    setToasts(prev => [...prev, {id, meesage, type}]);
+    setToasts(prev => [...prev, {id, message, type}]);
     setTimeout(() => removeToast(id),5000);
   }
 
@@ -57,7 +58,7 @@ function App(){
       <div className="header">
         <h1>SiteSense</h1>
         <p>
-          Analyze websites's SEO, issues in them, tags, links and more.
+          Analyzes websites's SEO as well as issues in them, scores the perfoemance and more.
         </p>
       </div>
       <AnalyzeForm 
