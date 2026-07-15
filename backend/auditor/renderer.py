@@ -1,3 +1,4 @@
+import requests
 import time
 from dataclasses import dataclass
 from pathlib import Path
@@ -30,6 +31,21 @@ class RenderResult:
 
 
 def render(url: str) -> RenderResult:
+    url = url.strip()
+    if not url:
+        raise RenderError("Please enter a website URL.")
+    
+    if not urlparse(url).scheme:
+        https_url = "https://" +url
+        try:
+            requests.head(
+                https_url,
+                timeout=5,
+                allow_redirects=True,
+            )
+            url=https_url
+        except requests.RequestException:
+            url = "http://" +url
     start = time.time()
 
     try:
@@ -82,8 +98,8 @@ def render(url: str) -> RenderResult:
             result_url = page.url
             parsed = urlparse(page.url)
             filename = (
-                parsed.netloc +parsed.path
-            ).replace("/","_").replace(":","_")
+                parsed.netloc.replace(":","_")
+                )
             if not filename:
                 filename = "homepage"
             screenshot_path = (
