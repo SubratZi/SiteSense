@@ -37,14 +37,19 @@ def render(url: str) -> RenderResult:
             browser = p.chromium.launch(
                 headless=True
             )
-
-            page = browser.new_page(
+            context = browser.new_context(
                 viewport={
                     "width": 1440,
                     "height": 900,
-                }
+                },
+                permissions=[],
             )
-
+            page = context.new_page()
+            page.add_init_script("""
+            Object.defineProperty(Notification, 'permission', {
+                get: () => 'denied'
+            });
+            """)
             response = page.goto(
                 url,
                 wait_until="domcontentloaded",

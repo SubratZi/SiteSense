@@ -1,4 +1,5 @@
 function ScreenshotCard({screenshot}) {
+    const API_URL = import.meta.env.VITE_API_URL;
     if(!screenshot) return null;
 
     return (
@@ -6,7 +7,7 @@ function ScreenshotCard({screenshot}) {
             <p className = "card-title"> Screenshot</p>
             <img 
                 className = "screenshot-img" 
-                src={`http://127.0.0.1:8000/${screenshot}`}
+                src={`${API_URL}/${screenshot}`}
                 alt = "Website Screenshot" 
             />
         </div>
