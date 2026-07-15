@@ -34,3 +34,5 @@ pip-wheel-metadata/
 *.sqlite3
 
 *.tmp
+
+backend/screenshots
