@@ -36,5 +36,3 @@ pip-wheel-metadata/
 *.tmp
 
 backend/screenshots
-
-screenshots
