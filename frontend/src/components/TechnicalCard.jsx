@@ -1,44 +1,42 @@
+function Bool({value}){
+    return(
+        <span className = {`badge ${value ? "pass": "fail"}`}>
+            {value ? "Yes": "No"}
+        </span>
+    );
+}
+
 function TechnicalCard({technical}) {
     return(
-        <div
-            style= {{
-                border: "1px solid #ddd",
-                borderRadius: "10px",
-                padding: "20px",
-                marginTop: "20px",
-            }}
-        >
-            <h2>Technical Analysis</h2>
-            <p> 
-                <strong>HTTPS:</strong>{" "}
-                {technical.has_https? "Yes": "No"}
-            </p>
-
-            <p>
-                <strong>Language Attribute:</strong>{" "}
-                {technical.has_lang ? "Yes" : "No"}
-            </p>
-
-            <p>
-                <strong>Charset:</strong>{" "}
-                {technical.has_charset? "Yes": "No"}
-            </p>
-
-            <p>
-                <strong>Viewport:</strong>{" "}
-                {technical.has_viewport ? "Yes": "No"}
-            </p>
-
-            <p>
-                <strong>Canonical URL:</strong>{" "}
-                {technical.has_canonical ? "Yes": "No"}
-            </p>
-
-            <p>
-                <strong>Robots Tag:</strong> {" "}
-                {technical.has_robots ? "Yes" : "No"}
-            </p>
-        </div>
+        <div className="card">
+      <p className="card-title">Technical</p>
+      <ul className="kv-list">
+        <li className="kv-row">
+          <span className="kv-label">HTTPS</span>
+          <Bool value={technical.has_https} />
+        </li>
+        <li className="kv-row">
+          <span className="kv-label">Language attribute</span>
+          <Bool value={technical.has_lang} />
+        </li>
+        <li className="kv-row">
+          <span className="kv-label">Charset</span>
+          <Bool value={technical.has_charset} />
+        </li>
+        <li className="kv-row">
+          <span className="kv-label">Viewport</span>
+          <Bool value={technical.has_viewport} />
+        </li>
+        <li className="kv-row">
+          <span className="kv-label">Canonical URL</span>
+          <Bool value={technical.has_canonical} />
+        </li>
+        <li className="kv-row">
+          <span className="kv-label">Robots tag</span>
+          <Bool value={technical.has_robots} />
+        </li>
+      </ul>
+    </div>
     );
 }
 
