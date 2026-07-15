@@ -1,28 +1,40 @@
 function SEOCard({seo}) {
+    const titleOk = seo.title && seo.title_length >=30 && seo.length <=60;
+    const metaOk = seo.meta_description && seo.meta_description_length >=120 && seo.meta_description_length <=160;
     return (
-        <div 
-            style ={{
-               border: "1px solid #ddd",
-               borderRadius: "10px",
-               padding: "20px",
-               marginTop: "20px", 
-            }}
-            >
-                <h2> SEO Analysis </h2>
-                <p><strong>Title:</strong>{seo.title ?? "Not Found"}</p>
-                <p><strong>Title Length:</strong> {seo.title_length}</p>
-                <p>
-                    <strong>Meta Description:</strong>{" "}
-                    {seo.meta_description ?? "Not Found"}
-                </p>
-                <p>
-                    <strong>Meta Description Length:</strong>{" "}
-                    {seo.meta_description_length}
-                </p>
-                <p><strong>H1 Count:</strong> {seo.h1_count}</p>
-                <p><strong>H2 Count:</strong> {seo.h2_count}</p>
-                <p><strong>Word Count:</strong>{seo.word_count}</p>
-            </div>
+        <div className= "card">
+            <p className = "card-title">SEO</p>
+            <ul className = "kv-list">
+                <li className = "kv-row">
+                    <span className= "kv-label">Title length</span>
+                    <span className = "kv-value">{seo.title ?? "-"}</span>
+                </li>
+                <li className = "kv-row">
+                    <span className = "kv-label">Title length</span>
+                    <span className = {`badge ${titleOk ? "pass":"fail"}`}>
+                        {seo.title_length} chars
+                    </span>
+                </li>
+                <li className = "kv-row">
+                    <span className = "kv-label">Meta description</span>
+                    <span className = "kv-value">{seo.meta_description ?? "-"}</span>
+                </li>
+                <li className = "kv-row">
+                    <span className = "kv-label">Meta length</span>
+                    <span className = {`badge ${metaOk ? "pass" : "fail"}`}>
+                        {seo.meta_description_length} chars
+                    </span>
+                </li>
+                <li className = "kv-row">
+                    <span className = "kv-row">H1 Count</span>
+                    <span className = {`badge ${seo.h1_count === 1 ? "pass" : "fail"}`}>{seo.h1_count}</span>
+                </li>
+                <li className = "kv-row">
+                    <span className = "kv-label">H2 count</span>
+                    <span className = {`badge ${seo.word_count >=300 ? "pass" :"warn"}`}>{seo.word_count} words</span>
+                </li>
+            </ul>
+        </div>
     );
 }
 
