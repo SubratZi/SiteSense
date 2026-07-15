@@ -58,7 +58,7 @@ function App(){
       <div className="header">
         <h1>SiteSense</h1>
         <p>
-          Analyzes websites's SEO as well as issues in them, scores the perfoemance and more.
+          Analyzes websites's SEO as well as issues in them, scores the performance and more.
         </p>
       </div>
       <AnalyzeForm 
