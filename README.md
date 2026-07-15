@@ -29,14 +29,9 @@ SiteSense/
 │   │   ├── test_technical.py
 │   │   ├── test_opengraph.py
 │   │   ├── test_scorer.py
-│   │   └── test_analyzer.py
-│   │   ├── test_api.py
-│   │
-│   └── static/  
-│   │   ├──index.html
-│   │   ├──script.js
-│   │   ├──style.css           
-│   |
+│   │   ├── test_analyzer.py
+│   │   └── test_api.py
+│   │         
 ├── .gitignore
 ├── README.md
 └── LICENSE
