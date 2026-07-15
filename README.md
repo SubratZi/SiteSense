@@ -2,37 +2,49 @@
 
 ## Folder Structure
 
-```
+```text
 SiteSense/
-│
 ├── backend/
-│   │
-│   ├── app.py                    
-│   ├── requirements.txt          
-│   │
-│   ├── auditor/                  
+│   ├── auditor/
 │   │   ├── __init__.py
-│   │   ├── analyzer.py           
-│   │   ├── renderer.py            
-│   │   ├── seo.py                
-│   │   ├── images.py             
-│   │   ├── links.py              
-│   │   ├── technical.py          
-│   │   ├── opengraph.py           
-│   │   └── scorer.py             
-│   │
-│   ├── tests/                    
-│   │   ├── test_renderer.py
-│   │   ├── test_seo.py
-│   │   ├── test_images.py
-│   │   ├── test_links.py
-│   │   ├── test_technical.py
-│   │   ├── test_opengraph.py
-│   │   ├── test_scorer.py
-│   │   ├── test_analyzer.py
-│   │   └── test_api.py
-│   │         
+│   │   ├── analyzer.py
+│   │   ├── images.py
+│   │   ├── links.py
+│   │   ├── opengraph.py
+│   │   ├── renderer.py
+│   │   ├── scorer.py
+│   │   ├── seo.py
+│   │   └── technical.py
+│   ├── screenshots/
+│   ├── tests/
+│   ├── app.py
+│   ├── schemas.py
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── api/
+│   │   │   └── api.js
+│   │   ├── components/
+│   │   │   ├── AnalyzeForm.jsx
+│   │   │   ├── ImagesCard.jsx
+│   │   │   ├── LinksCard.jsx
+│   │   │   ├── OpenGraphCard.jsx
+│   │   │   ├── RecommendationList.jsx
+│   │   │   ├── ScoreCard.jsx
+│   │   │   ├── ScreenshotCard.jsx
+│   │   │   ├── SEOCard.jsx
+│   │   │   ├── TechnicalCard.jsx
+│   │   │   └── Toast.jsx
+│   │   ├── App.jsx
+│   │   ├── App.css
+│   │   ├── main.jsx
+│   │   └── index.css
+│   ├── package.json
+│   └── vite.config.js
+│
 ├── .gitignore
-├── README.md
-└── LICENSE
+├── LICENSE
+└── README.md
 ```
