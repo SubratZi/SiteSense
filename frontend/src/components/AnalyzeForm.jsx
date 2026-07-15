@@ -11,8 +11,8 @@ function AnalyzeForm({ onAnalyze, loading }){
     return(
         <form className = "form" onSubmit={handleSubmit}>
             <input
-                type="url"
-                placeholder="https://example.com"
+                type="text"
+                placeholder="example.com"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
                 required
