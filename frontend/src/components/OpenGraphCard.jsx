@@ -1,35 +1,35 @@
+function OGValue ({value}){
+    if (!value) return <span className = "badge fail">Missing</span>
+    return <span className = "kv-value">{value}</span>;
+}
+
 function OpenGraphCard({opengraph}) {
     return(
-        <div
-            style = {{
-                border: "1px solid #ddd",
-                borderRadius: "10px",
-                padding: "20px",
-                marginTop: "20px",
-            }}
-        >
-            <h2>Open Graph</h2>
-            <p>
-                <strong>OG Title:</strong>{" "}
-                {opengraph.og_title ?? "Not Found"}
-            </p>
-            <p>
-                <strong>OG Description:</strong>{" "}
-                {opengraph.og_description ?? "Not Found"}
-            </p>
-            <p>
-                <strong>OG Image:</strong>{" "}
-                {opengraph.og_image ?? "Not Found"}
-            </p>
-            <p>
-                <strong>OG URL:</strong>{" "}
-                {opengraph.og_url ?? "Not Found"}
-            </p>
-            <p>
-                <strong>Twitter Card:</strong>{" "}
-                {opengraph.twitter_card ?? "Not Found"}
-            </p>
-        </div>
+    <div className="card">
+      <p className="card-title">Open Graph</p>
+      <ul className="kv-list">
+        <li className="kv-row">
+          <span className="kv-label">og:title</span>
+          <OGValue value={opengraph.og_title} />
+        </li>
+        <li className="kv-row">
+          <span className="kv-label">og:description</span>
+          <OGValue value={opengraph.og_description} />
+        </li>
+        <li className="kv-row">
+          <span className="kv-label">og:image</span>
+          <OGValue value={opengraph.og_image} />
+        </li>
+        <li className="kv-row">
+          <span className="kv-label">og:url</span>
+          <OGValue value={opengraph.og_url} />
+        </li>
+        <li className="kv-row">
+          <span className="kv-label">Twitter card</span>
+          <OGValue value={opengraph.twitter_card} />
+        </li>
+      </ul>
+    </div>
     );
 }
 
