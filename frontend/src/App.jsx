@@ -9,10 +9,22 @@ import TechnicalCard from "./components/TechnicalCard";
 import OpenGraphCard from "./components/OpenGraphCard";
 import ImagesCard from "./components/ImagesCard";
 import LinksCard from "./components/LinksCard";
+import toast from "./components/Toast";
 
 function App(){
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
+  const [toasts, setToasts] = useState([]);
+
+  function addToast(message, type = "error"){
+    const id = Date.now();
+    setToasts(prev => [...prev, {id, meesage, type}]);
+    setTimeout(() => removeToast(id),5000);
+  }
+
+  function removeToast(id) {
+    setToasts(prev => prev.filter(t => t.id !== id));
+  }
 
   async function analyzeWebsite(url){
     try{
@@ -22,9 +34,9 @@ function App(){
       });
       setResult(response.data);
     } catch(error){
-      alert(
-        error.response?.data?.detail ??
-        "Failed to analyze website."
+      addToast(
+        error.response?.data?.detail ?? "Failed to analyze website",
+        "error"
       );
     } finally{
       setLoading(false);
@@ -32,6 +44,16 @@ function App(){
   }
   return(
     <div className="app">
+      <div className = "toast-container">
+        {toasts.map(t => (
+          <Toast 
+          key = {t.id}
+          message = {t.message}
+          type = {t.type}
+          onClose = {() => removeToast(t.id)}
+          />
+        ))}
+      </div>
       <div className="header">
         <h1>SiteSense</h1>
         <p>
@@ -44,20 +66,22 @@ function App(){
       />
 
       {result && (
-        <>
-          <ScoreCard score = {result.score} />
-          <RecommendationList
-            recommendations = {result.score.recommendations}
-          />
-          <ScreenshotCard
-            screenshot={result.render.screenshot}
-          />
-          <SEOCard seo={result.seo} />
-          <TechnicalCard technical={result.technical} />
-          <OpenGraphCard opengraph = {result.opengraph} />
-          <ImagesCard images = {result.images}/>
-          <LinksCard links={result.links} />
-        </>
+        <div className= "results">
+          <div className = "results-top">
+            <ScoreCard score = {result.score} />
+            <ScreenshotCard screenshot = {result.render.screenshot} />
+          </div>
+
+          <RecommendationList recommendations = {result.score.recommendations} />
+
+          <div className = "results-grid">
+            <SEOCard seo = {result.seo} />
+            <TechnicalCard technical = {result.technical} />
+            <OpenGraphCard opengraph = {result.opengraph} />
+            <ImagesCard images = {result.images} />
+            <LinksCard links = {result.links} />
+          </div>
+        </div>
       )}
     </div>
   );
